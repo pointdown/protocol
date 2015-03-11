@@ -16,11 +16,11 @@ This decomposition somewhat presupposes a vaguely static tile-hirearchy approach
 
 The several formats we know of today for streaming point cloud data are described here:
 
-* [pointcloudviz](pointcloudviz.md)
-
 * [escience/Netherlands](escience.md)
 
 * [Displaz](displaz.md)
+
+* [pointcloudviz](pointcloudviz.md)
 
 * [potree](potree.md)
 
