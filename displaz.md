@@ -21,7 +21,7 @@ interests of being as simple as possible.  I've just started reviewing
 the literature for point cloud compression techniques and how they
 relate to the needs of a streaming format in the last few weeks.
 
-# DATA SET
+# Data Set
 
 Currently only local file names are supported, but I was planning to
 support remote sources as simple file URLs on a server supporting
@@ -33,7 +33,7 @@ infrastructure.  I haven't yet spent much time thinking about how this
 would play with authentication and proxy caching but I think the
 general scheme can be made to work.
 
-# METADATA
+# Metadata
 
 Obviously required, but I haven't tried to design this yet (the
 existing hcloud header is a simple binary format not recommended for
@@ -41,7 +41,7 @@ general consumption ;-) ).  Vague plan would be to go with a simple
 extensible metadata format (json would be ok I guess) with a magic
 number, version and header size prefix.
 
-# TREE STRUCTURE
+# Tree Structure
 
 hcloud contains an octree where each interior node has an NxNxN cube
 of points in sparse format, with the leaf nodes holding the original
@@ -55,7 +55,7 @@ I tried about 1e9 points before I got bored waiting for the database
 load; I'd give some actual stats, but I'm on holiday at the moment and
 away from my dev box.
 
-# PAYLOAD
+# Payload
 
 Per above, each interior node contains a sparse set of NxNxN points
 where N is defined in the header, and the leaf nodes contain a list of
@@ -68,7 +68,9 @@ point attributes, with certain "blessed" attributes (colour and
 intensity, possibly others) as a base requirement to be supported by
 readers.
 
-# POINT SELECTION - All the points are contained in the leaf node tiles at
+# Point Selection
+
+All the points are contained in the leaf node tiles at
 level N. Each tile at level N-1 contains 1/4 of the points contained in the
 level N nodes. The “decimation” process currently used just naively takes
 every 4th point, but I would cal this an implementation detail: the tiling
@@ -102,7 +104,7 @@ point to represent those at the higher level of detail.  Unfortunately
 this replaces the systematic bias of averaging with noise, which is
 particularly objectionable at low detail levels.
 
-# COMMENTS, ASSUMPTIONS, PROBLEMS, ETC:
+# Comments, Assumptions, Problems, etc
 
 * As you can see, I'm coming at this from a rendering perspective.  As
 far as I can tell, good results for general 3D data will require

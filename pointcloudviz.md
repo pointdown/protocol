@@ -1,7 +1,7 @@
 *(this description derived from a mailing list post by Rafael Gaitán, rafa.gaitan AT mirage-tech.com)*
 
 
-# DATA SET
+# Data Set
 
 I agree with [the Rialto URL approach], but I'll add some more parameters, since there are multiple possible clients and different purposes, for instance our server supports dataset selection by url, but also the format, compression, and also the "pre-generated" tiles
 
@@ -20,7 +20,7 @@ For instance:
 The idea is a web services in which you can decide/provide what is more convinient for your client application.
 
 
-# METADATA
+# Metadata
 
 I agree again [with the Rialto approach], but following the idea of WebService and using a similar OGC terminology we propose an API similar to:
 
@@ -52,7 +52,7 @@ Additionally in our server /getConfig also sends the API, the formats and the co
 ]
 ```
 
-# TREE STRUCTURE
+# Tree Structure
 
 [The Rialto approach] is perfectly valid for heightmaps and images, but poinclouds could be real 3D, not only aereal, but also from ground scanners (see: http://server.pointcloudviz.com:9090/?config=utah.osgjsb)
 
@@ -63,19 +63,20 @@ The idea is similar to the quadtree but using as designation 4 values: Level, X,
 Our prototype uses a "lazy" approach and uses the pointcloudviz format for serving the tiles, but as long as the API is the same, the tiles on disk could be any format.
 
 
-# PAYLOAD
+# Payload
 
 [The Rialto approach] could be one of the formats, or even the default format using the described API. Also remember that pointclouds are not only "points", they also have a lot of other useful information as the classification, the intensity, etc etc that need to be sent/queried to the server.
 
 Our approach sends always all the information per tile, since the number of requests to the server when using web clients were too many, and that gave us poor performance, but still more work need to be done on the server side.
 
 
-# POINT SELECTION
+# Point Selection
 
 I agree [with the Rialto approach], this is something that the API/Server should solve when the request is performed. Our prototype still does not support that but it could be implemented computing the best level for the query and extracting the tiles that intersect that query, serving them in multiple tiles or one dataset.
 
 
-(6) COMMENTS, ASSUMPTIONS, PROBLEMS, ETC:
+
+# Comments, Assumptions, Problems, etc
 
 * [The Rialto proposal] and mine are similar, so the same applies, Our preliminary work says that the system works, but scalability is something we need to work for.
 
